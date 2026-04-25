@@ -423,23 +423,14 @@
   .newsletter .eyebrow { justify-content: center; }
   .newsletter .eyebrow::before { display: none; }
   .newsletter .lede { margin: 0 auto 40px; }
-  .newsletter-form {
-    display: flex; gap: 12px; max-width: 520px; margin: 0 auto;
-    padding: 6px;
-    background: #fff;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-  }
-  .newsletter-form input {
-    flex: 1; border: none; outline: none;
+  .newsletter-form { display: flex; gap: 12px; width: 100%; max-width: 520px; margin: 0 auto; padding: 6px; background: #fff; border: 1px solid var(--hairline); border-radius: 999px; box-sizing: border-box; }
+  .newsletter-form input { flex: 1; min-width: 0; border: none; outline: none;
     padding: 14px 20px;
     background: transparent;
     font-family: inherit; font-size: 14px; color: var(--ink);
   }
   .newsletter-form input::placeholder { color: var(--muted); }
-  .newsletter-form button {
-    border: none; cursor: pointer;
-    padding: 14px 28px; border-radius: 999px;
+  .newsletter-form button { flex-shrink: 0; border: none; cursor: pointer; padding: 14px 22px; border-radius: 999px;
     background: var(--plum-deep); color: var(--cream);
     font-family: inherit; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
     transition: background .25s;
@@ -539,14 +530,14 @@
     .nav-brand { margin-left: 0; }
     .nav-links { display: none; margin-right: 0; }
     .nav-toggle { display: block; }
-    .hero { padding: 200px 24px 64px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 12px; }
+    .hero { padding: 220px 24px 64px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 8px; }
     .hero-text { text-align: center; display: contents; }
     .hero-sub { margin-left: auto; margin-right: auto; }
     .hero-ctas { justify-content: center; }
     .hero-ctas-desktop { display: none; }
     .hero-ctas-mobile { display: inline-flex; }
-    .portrait-wrap { max-width: 320px; margin: -8px auto 0; }
+    .portrait-wrap { max-width: 320px; margin: -32px auto 0; }
     .watch-frame iframe { height: 325px; }
     section.block { padding: 96px 24px; }
     .episode-grid, .about-grid, .substack-layout { grid-template-columns: 1fr; gap: 56px; }
