@@ -106,22 +106,61 @@
   .page-hero-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 28px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--plum); font-weight: 500; }
   .page-hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rose); }
 
-  /* GALLERY */
+  /* GALLERY CAROUSEL */
   .gallery {
-    padding: 40px 56px 0;
+    padding: 40px 0 0;
     background: var(--cream);
   }
-  .gallery-grid {
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 320px 320px;
-    gap: 12px;
+  .gallery-shell {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
   }
+  .gallery-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124,94,142,0.3) transparent;
+  }
+  .gallery-carousel::-webkit-scrollbar { height: 6px; }
+  .gallery-carousel::-webkit-scrollbar-track { background: transparent; }
+  .gallery-carousel::-webkit-scrollbar-thumb { background: rgba(124,94,142,0.3); border-radius: 3px; }
   .gallery-img {
+    flex: 0 0 min(70vw, 880px);
+    aspect-ratio: 16 / 10;
+    scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background-size: cover; background-position: center;
     background-color: var(--blush);
   }
-  .gallery-img.main { grid-row: 1 / span 2; }
+  .gallery-nav {
+    position: absolute;
+    top: calc(50% - 8px); transform: translateY(-50%);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--hairline);
+    color: var(--plum-deep);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 22px; line-height: 1;
+    transition: all .25s ease;
+    z-index: 2;
+    box-shadow: 0 8px 20px -8px rgba(74, 58, 85, 0.25);
+  }
+  .gallery-nav:hover { background: #fff; transform: translateY(-50%) scale(1.06); color: var(--rose); }
+  .gallery-nav.prev { left: 16px; }
+  .gallery-nav.next { right: 16px; }
+  .gallery-counter {
+    text-align: center;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
 
   /* DETAILS LAYOUT */
   .details {
@@ -360,10 +399,10 @@
     .nav-links { display: none; }
     .nav-toggle { display: block; }
     .page-hero { padding: 130px 24px 48px; }
-    .gallery { padding: 24px 24px 0; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
-    .gallery-img.main { grid-column: 1 / -1; grid-row: auto; }
-    .gallery-img:nth-child(n+5) { display: none; }
+    .gallery { padding: 24px 0 0; }
+    .gallery-shell { padding: 0 24px; }
+    .gallery-img { flex-basis: 85vw; aspect-ratio: 4 / 3; }
+    .gallery-nav { display: none; }
     .details { padding: 56px 24px 64px; }
     .details-inner { grid-template-columns: 1fr; gap: 40px; }
     .sidebar { position: static; padding: 24px; }
@@ -447,12 +486,22 @@
 
 <!-- GALLERY -->
 <section class="gallery">
-  <div class="gallery-grid">
-    <div class="gallery-img main fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/0176093f-9685-4d0c-a088-96da479fa63f/BodhiCasitas_%C2%A9kirstenellis_022_HR-870x965.jpg?format=2500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1eded978-3791-4000-ad05-3f4555a02789/BodhiCasitas_%C2%A9kirstenellis_014_HR-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/5a8168d9-cb70-40a4-b9a4-183e2735a324/BodhiCasitas_%C2%A9kirstenellis_021_HR-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/675d2ad4-3a6f-4301-b8bf-cfb0cd817909/BodhiCasitas_%C2%A9kirstenellis_009_HR-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/737d346c-1181-43d8-a327-c758358af9e1/BodhiCasitas_%C2%A9kirstenellis_003_HR-870x965.jpg?format=1500w')"></div>
+  <div class="gallery-shell">
+    <button class="gallery-nav prev" aria-label="Previous photo">‹</button>
+    <div class="gallery-carousel">
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/0176093f-9685-4d0c-a088-96da479fa63f/BodhiCasitas_%C2%A9kirstenellis_022_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/e75c0af6-e683-410b-a25c-13f642109e15/BodhiCasitas_%C2%A9kirstenellis_002_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/737d346c-1181-43d8-a327-c758358af9e1/BodhiCasitas_%C2%A9kirstenellis_003_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/e20b058b-2655-45be-8584-03d17ef0b37e/BodhiCasitas_%C2%A9kirstenellis_007_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/c47a9380-56cd-43a5-be06-8bef28e354bc/BodhiCasitas_%C2%A9kirstenellis_008_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/675d2ad4-3a6f-4301-b8bf-cfb0cd817909/BodhiCasitas_%C2%A9kirstenellis_009_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1eded978-3791-4000-ad05-3f4555a02789/BodhiCasitas_%C2%A9kirstenellis_014_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/e20f25d2-1dd3-487c-b5ae-c76d5e51171d/BodhiCasitas_%C2%A9kirstenellis_020_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/5a8168d9-cb70-40a4-b9a4-183e2735a324/BodhiCasitas_%C2%A9kirstenellis_021_HR-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/afc5eb23-bf59-4715-b8c1-fd18367aacfb/BodhiCasitas_%C2%A9kirstenellis_024_HR-870x965.jpg?format=2500w')"></div>
+    </div>
+    <button class="gallery-nav next" aria-label="Next photo">›</button>
+    <div class="gallery-counter">Swipe or click arrows · 10 photos</div>
   </div>
 </section>
 
@@ -622,6 +671,17 @@
   if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
   if (mobileMenu) mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  // Gallery carousel
+  document.querySelectorAll('.gallery-shell').forEach(shell => {
+    const carousel = shell.querySelector('.gallery-carousel');
+    const prev = shell.querySelector('.gallery-nav.prev');
+    const next = shell.querySelector('.gallery-nav.next');
+    if (!carousel) return;
+    const step = () => carousel.clientWidth * 0.7;
+    if (prev) prev.addEventListener('click', () => carousel.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => carousel.scrollBy({ left: step(), behavior: 'smooth' }));
+  });
 
   gsap.to('.page-hero .fade-up', { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.08, delay: 0.15 });
   gsap.utils.toArray('section').forEach(section => {

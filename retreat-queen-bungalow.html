@@ -106,22 +106,61 @@
   .page-hero-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 28px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--plum); font-weight: 500; }
   .page-hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rose); }
 
-  /* GALLERY */
+  /* GALLERY CAROUSEL */
   .gallery {
-    padding: 40px 56px 0;
+    padding: 40px 0 0;
     background: var(--cream);
   }
-  .gallery-grid {
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 320px 320px;
-    gap: 12px;
+  .gallery-shell {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
   }
+  .gallery-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124,94,142,0.3) transparent;
+  }
+  .gallery-carousel::-webkit-scrollbar { height: 6px; }
+  .gallery-carousel::-webkit-scrollbar-track { background: transparent; }
+  .gallery-carousel::-webkit-scrollbar-thumb { background: rgba(124,94,142,0.3); border-radius: 3px; }
   .gallery-img {
+    flex: 0 0 min(70vw, 880px);
+    aspect-ratio: 16 / 10;
+    scroll-snap-align: start;
     border-radius: 12px; overflow: hidden;
     background-size: cover; background-position: center;
     background-color: var(--blush);
   }
-  .gallery-img.main { grid-row: 1 / span 2; }
+  .gallery-nav {
+    position: absolute;
+    top: calc(50% - 8px); transform: translateY(-50%);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--hairline);
+    color: var(--plum-deep);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 22px; line-height: 1;
+    transition: all .25s ease;
+    z-index: 2;
+    box-shadow: 0 8px 20px -8px rgba(74, 58, 85, 0.25);
+  }
+  .gallery-nav:hover { background: #fff; transform: translateY(-50%) scale(1.06); color: var(--rose); }
+  .gallery-nav.prev { left: 16px; }
+  .gallery-nav.next { right: 16px; }
+  .gallery-counter {
+    text-align: center;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
 
   /* DETAILS LAYOUT */
   .details {
@@ -129,9 +168,8 @@
     background: var(--cream);
   }
   .details-inner {
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px;
-    align-items: start;
+    max-width: 760px; margin: 0 auto;
+    display: block;
   }
   .details-body p {
     font-size: 17px; line-height: 1.85; color: var(--ink);
@@ -162,6 +200,40 @@
     background-size: cover; background-position: center;
     box-shadow: 0 30px 60px -24px rgba(74, 58, 85, 0.3);
   }
+
+  /* OVERVIEW STRIP */
+  .overview {
+    padding: 0 56px 80px;
+    background: var(--cream);
+  }
+  .overview-card {
+    max-width: 1180px; margin: 0 auto;
+    background: var(--cream-warm);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 32px 40px;
+    display: grid; grid-template-columns: 1.2fr 1.4fr auto; gap: 40px; align-items: center;
+  }
+  .overview-price {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .overview-eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500;
+  }
+  .overview-amount {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: 36px; color: var(--plum-deep); line-height: 1;
+  }
+  .overview-amount-unit { font-size: 14px; color: var(--muted); margin-left: 4px; font-family: 'Poppins', sans-serif; font-weight: 400; }
+  .overview-note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .overview-specs {
+    display: grid; grid-template-columns: repeat(2, auto); gap: 8px 32px;
+    font-size: 13.5px;
+  }
+  .overview-specs div { display: flex; justify-content: space-between; gap: 16px; }
+  .overview-specs strong { font-weight: 500; color: var(--plum-deep); font-family: 'Playfair Display', serif; font-style: italic; }
+  .overview-specs span { color: var(--muted); }
 
   /* SIDEBAR */
   .sidebar {
@@ -367,12 +439,14 @@
     .nav-links { display: none; }
     .nav-toggle { display: block; }
     .page-hero { padding: 130px 24px 48px; }
-    .gallery { padding: 24px 24px 0; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
-    .gallery-img.main { grid-column: 1 / -1; grid-row: auto; }
-    .gallery-img:nth-child(n+5) { display: none; }
-    .details { padding: 56px 24px 64px; }
-    .details-inner { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-shell { padding: 0 24px; }
+    .gallery-img { flex-basis: 85vw; aspect-ratio: 4 / 3; }
+    .gallery-nav { display: none; }
+    .details { padding: 56px 24px 48px; }
+    .overview { padding: 0 24px 56px; }
+    .overview-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; text-align: center; }
+    .overview-specs { justify-content: center; }
+    .overview-specs div { justify-content: center; }
     .sidebar { position: static; padding: 24px; }
     .includes { padding: 0 24px 56px; }
     .includes-inner { padding: 28px; }
@@ -454,12 +528,20 @@
 
 <!-- GALLERY -->
 <section class="gallery">
-  <div class="gallery-grid">
-    <div class="gallery-img main fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/3ef5591a-59a6-41a4-b4d0-ff74ded2664c/queen-bungalow.jpg?format=2500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/25643edd-989b-4d84-b9d2-201103a240cb/Bodhi_Nov_LOWRes_069-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/51ebecc5-eadd-4bdd-aba3-6012706ed1b0/Bodhi_Nov_LOWRes_067-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/61060214-0da6-4001-b20d-0f03e84d4167/Bodhi_Nov_LOWRes_068-870x965.jpg?format=1500w')"></div>
-    <div class="gallery-img fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/b89bb2b3-b829-4148-8acb-a5edbbd2944f/Bodhi_Nov_LOWRes_071-870x965.jpg?format=1500w')"></div>
+  <div class="gallery-shell">
+    <button class="gallery-nav prev" aria-label="Previous photo">‹</button>
+    <div class="gallery-carousel" id="galleryCarousel">
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/3ef5591a-59a6-41a4-b4d0-ff74ded2664c/queen-bungalow.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/25643edd-989b-4d84-b9d2-201103a240cb/Bodhi_Nov_LOWRes_069-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/51ebecc5-eadd-4bdd-aba3-6012706ed1b0/Bodhi_Nov_LOWRes_067-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/61060214-0da6-4001-b20d-0f03e84d4167/Bodhi_Nov_LOWRes_068-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/f36856ea-ce59-4204-8d19-46bc60c62010/Bodhi_Nov_LOWRes_070-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/b89bb2b3-b829-4148-8acb-a5edbbd2944f/Bodhi_Nov_LOWRes_071-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/e58e640d-a238-4400-aa36-ae7f52bdde94/Bodhi_Nov_LOWRes_073-870x965.jpg?format=2500w')"></div>
+      <div class="gallery-img" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/fdfb27b8-62aa-4868-8aab-5520332a041c/Bodhi_Nov_LOWRes_060-870x965.jpg?format=2500w')"></div>
+    </div>
+    <button class="gallery-nav next" aria-label="Next photo">›</button>
+    <div class="gallery-counter">Swipe or click arrows · 8 photos</div>
   </div>
 </section>
 
@@ -470,38 +552,25 @@
       <p class="lead fade-up">Two queen beds, a private balcony, and the soft sound of waterfalls in the distance.</p>
       <p class="fade-up">This unit features two queen beds with dramatic high ceilings, a wet bar filled with local delights, Egyptian cotton sheets, air conditioning, and a laptop-sized safe. Unwind by lounging on your outdoor balcony as you hear the sounds of waterfalls in the distance.</p>
       <p class="fade-up">Study or work in comfort at the large work desk with access to free wireless internet. Refresh in your open-air rainfall shower, featuring luxurious Raw Botanicals toiletries.</p>
-
-      <figure class="feature-image fade-up" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/dc47fc8b-3347-43d9-8c16-85c3569652ab/Bodhi_Nov_LOWRes_068-870x965.jpg?format=2500w')"></figure>
     </div>
+  </div>
+</section>
 
-    <aside class="sidebar fade-up">
-      <div class="eyebrow" style="margin-bottom: 14px;">Per person, double occupancy</div>
-      <div class="sidebar-price-row">
-        <span class="sidebar-price-amount">$3,599</span>
-        <span class="sidebar-price-unit">all inclusive</span>
-      </div>
-      <div class="sidebar-price-note">Save $100 paying in full via Venmo</div>
-      <a class="btn-primary" href="#payments">See payment options <span class="arrow">→</span></a>
-
-      <div class="sidebar-divider"></div>
-      <h4>Room details</h4>
-      <ul>
-        <li>Maximum capacity <span>2</span></li>
-        <li>Beds <span>2 Queen</span></li>
-        <li>Bathroom <span>1 Ensuite</span></li>
-        <li>Size <span>19 m² + Balcony</span></li>
-      </ul>
-
-      <div class="sidebar-divider"></div>
-      <h4>In this room</h4>
-      <ul class="sidebar-amenities">
-        <li>Private Balcony</li>
-        <li>Open Air Rainfall Shower</li>
-        <li>Work Desk + Mini Bar</li>
-        <li>Egyptian Cotton Sheets</li>
-        <li>Spacious Closet</li>
-      </ul>
-    </aside>
+<!-- AT A GLANCE -->
+<section class="overview">
+  <div class="overview-card fade-up">
+    <div class="overview-price">
+      <span class="overview-eyebrow">Per person, double occupancy</span>
+      <span class="overview-amount">$3,599<span class="overview-amount-unit">all inclusive</span></span>
+      <span class="overview-note">Save $100 paying in full via Venmo</span>
+    </div>
+    <div class="overview-specs">
+      <div><strong>Capacity</strong> <span>2 guests</span></div>
+      <div><strong>Beds</strong> <span>2 Queen</span></div>
+      <div><strong>Size</strong> <span>19 m² + Balcony</span></div>
+      <div><strong>Bath</strong> <span>1 Ensuite</span></div>
+    </div>
+    <a class="btn-primary" href="#payments">See payment options <span class="arrow">→</span></a>
   </div>
 </section>
 
@@ -627,6 +696,17 @@
   if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
   if (mobileMenu) mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  // Gallery carousel
+  document.querySelectorAll('.gallery-shell').forEach(shell => {
+    const carousel = shell.querySelector('.gallery-carousel');
+    const prev = shell.querySelector('.gallery-nav.prev');
+    const next = shell.querySelector('.gallery-nav.next');
+    if (!carousel) return;
+    const step = () => carousel.clientWidth * 0.7;
+    if (prev) prev.addEventListener('click', () => carousel.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => carousel.scrollBy({ left: step(), behavior: 'smooth' }));
+  });
 
   gsap.to('.page-hero .fade-up', { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.08, delay: 0.15 });
   gsap.utils.toArray('section').forEach(section => {
