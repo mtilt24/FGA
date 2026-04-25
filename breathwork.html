@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Breathwork Events | FEEL Good Always</title>
+<meta name="description" content="Join Becky Bradley for breathwork experiences devoted to surrender, release, and connection. Upcoming events at Zuda Yoga and East Wind Yoga." />
+<link rel="canonical" href="https://www.feelgoodalways.org/breathwork" />
+<link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/3c63207b-64fe-4560-8105-74d81c2f71dc/favicon.ico?format=100w" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FEEL Good Always" />
+<meta property="og:title" content="Breathwork Events | FEEL Good Always" />
+<meta property="og:description" content="Join Becky Bradley for breathwork experiences devoted to surrender, release, and connection." />
+<meta property="og:url" content="https://www.feelgoodalways.org/breathwork" />
+<meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1771729552027-ADYZZBCFK06IJODWYVGW/IMG_4330.jpeg?format=1500w" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Breathwork Events | FEEL Good Always" />
+<meta name="twitter:description" content="Join Becky Bradley for breathwork experiences devoted to surrender, release, and connection." />
+<meta name="twitter:image" content="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1771729552027-ADYZZBCFK06IJODWYVGW/IMG_4330.jpeg?format=1500w" />
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Breathwork for Freedom, The Art of Surrender",
+    "startDate": "2026-04-24T18:30",
+    "endDate": "2026-04-24T20:30",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Zuda Yoga"
+    },
+    "image": "https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1771729552027-ADYZZBCFK06IJODWYVGW/IMG_4330.jpeg?format=1500w",
+    "description": "Join Becky Bradley at Zuda Yoga for a breathwork experience devoted to the practice of surrender, softening control, trusting the breath, and allowing the body to release what it has been holding.",
+    "organizer": { "@type": "Organization", "name": "FEEL Good Always", "url": "https://www.feelgoodalways.org/" },
+    "performer": { "@type": "Person", "name": "Becky Bradley" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Breathwork for Freedom at East Wind Yoga",
+    "startDate": "2026-05-23T17:00",
+    "endDate": "2026-05-23T19:00",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "East Wind Yoga"
+    },
+    "image": "https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1771729552027-ADYZZBCFK06IJODWYVGW/IMG_4330.jpeg?format=1500w",
+    "description": "Experience the medicine of your own breath. Join Andrea and Becky at East Wind Yoga for a transformative evening of release, healing, and connection.",
+    "organizer": { "@type": "Organization", "name": "FEEL Good Always", "url": "https://www.feelgoodalways.org/" },
+    "performer": [
+      { "@type": "Person", "name": "Becky Bradley" },
+      { "@type": "Person", "name": "Andrea" }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --cream: #FAF5EF;
+    --cream-warm: #F2E9DD;
+    --blush: #E8C9C2;
+    --rose: #C99A95;
+    --mauve: #B49EBC;
+    --lavender: #CFC2DD;
+    --plum: #7C5E8E;
+    --plum-deep: #4A3A55;
+    --ink: #2A2330;
+    --muted: #6B5F70;
+    --hairline: rgba(74, 58, 85, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased; line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(250, 245, 239, 0.85);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .nav-inner { max-width: 1180px; margin: 0 auto; padding: 4px 56px; display: flex; justify-content: space-between; align-items: center; }
+  .nav.scrolled { border-bottom-color: var(--hairline); }
+  .nav-brand { display: flex; flex-shrink: 0; margin-left: -58px; transition: transform .3s ease; }
+  .nav-brand:hover { transform: scale(1.03); }
+  .nav-logo { display: block; height: 84px; width: auto; }
+  .nav-links { display: flex; gap: 36px; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; margin-right: -32px; }
+  .nav-links a { color: var(--muted); text-decoration: none; transition: color .25s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--plum); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--plum-deep); font-size: 22px; }
+
+  /* SHARED */
+  .link-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    color: var(--plum-deep); text-decoration: none;
+    padding-bottom: 6px; border-bottom: 1px solid var(--plum-deep);
+    transition: all .3s;
+  }
+  .link-cta:hover { color: var(--rose); border-color: var(--rose); }
+  .link-cta .arrow { transition: transform .3s; display: inline-block; }
+  .link-cta:hover .arrow { transform: translateX(6px); }
+
+  .eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--rose); }
+
+  /* PAGE HERO */
+  .page-hero {
+    position: relative; overflow: hidden;
+    padding: 200px 56px 80px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(207, 194, 221, 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(232, 201, 194, 0.4) 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, #F6EEE6 100%);
+  }
+  .page-hero-cloud { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; pointer-events: none; }
+  .page-hero-cloud.c1 { width: 420px; height: 420px; top: -100px; left: -60px; background: var(--blush); }
+  .page-hero-cloud.c2 { width: 460px; height: 460px; bottom: -160px; right: -120px; background: var(--lavender); }
+  .page-hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
+  .page-hero-kicker { font-family: 'Playfair Display', serif; font-style: italic; color: var(--plum); font-size: 16px; letter-spacing: 0.03em; margin-bottom: 18px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.05; letter-spacing: -0.01em; color: var(--plum-deep); max-width: 760px; }
+  .page-hero h1 em { font-style: italic; color: var(--rose); font-weight: 500; }
+  .page-hero-sub { font-family: 'Playfair Display', serif; font-style: italic; color: var(--muted); font-size: 18px; line-height: 1.55; max-width: 540px; margin-top: 24px; }
+
+  /* INTRO */
+  .intro {
+    padding: 100px 56px;
+    background: var(--cream);
+  }
+  .intro-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center;
+  }
+  .intro-image-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    max-width: 460px;
+    width: 100%;
+  }
+  .intro-image {
+    width: 100%; height: 100%;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 30px 60px -24px rgba(74, 58, 85, 0.3);
+    position: relative; z-index: 2;
+  }
+  .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+  .intro-image-frame { position: absolute; inset: 24px -24px -24px 24px; border: 1px solid rgba(124, 94, 142, 0.4); border-radius: 12px; z-index: 1; }
+  .intro-text p { font-size: 17px; line-height: 1.85; color: var(--ink); margin-bottom: 24px; }
+  .intro-text p.lead { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.55; font-style: italic; color: var(--plum-deep); margin-bottom: 28px; }
+
+  /* EVENTS */
+  .events {
+    padding: 100px 56px 120px;
+    background: var(--cream);
+    border-top: 1px solid var(--hairline);
+  }
+  .events-inner { max-width: 1080px; margin: 0 auto; }
+  .events-head { margin-bottom: 48px; }
+  .events-head h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.15; color: var(--plum-deep); }
+  .events-head h2 em { font-style: italic; color: var(--rose); }
+  .events-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .event {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 32px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 28px 32px;
+    text-decoration: none;
+    transition: all .35s ease;
+  }
+  .event:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 94, 142, 0.3);
+    box-shadow: 0 24px 48px -20px rgba(124, 94, 142, 0.2);
+  }
+  .event-date {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: 12px;
+    background: linear-gradient(160deg, #F5EAE4 0%, #E8DCE8 100%);
+  }
+  .event-date-month {
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--rose); font-weight: 600;
+  }
+  .event-date-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; font-weight: 400; line-height: 1;
+    color: var(--plum-deep);
+    margin: 6px 0 4px;
+  }
+  .event-date-year {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .event-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .event-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400; font-size: 22px; line-height: 1.25;
+    color: var(--plum-deep);
+  }
+  .event-meta {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+    margin-bottom: 4px;
+    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  }
+  .event-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); opacity: 0.6; }
+  .event-desc {
+    font-size: 14.5px; line-height: 1.65; color: var(--muted);
+    margin-top: 4px;
+  }
+  .event-cta {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    color: var(--plum-deep);
+    display: inline-flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+  }
+  .event-cta .arrow { transition: transform .3s; }
+  .event:hover .event-cta { color: var(--rose); }
+  .event:hover .event-cta .arrow { transform: translateX(4px); }
+  /* NEWSLETTER */
+  .newsletter { padding: 120px 56px; background: var(--cream-warm); text-align: center; }
+  .newsletter-inner { max-width: 640px; margin: 0 auto; }
+  .newsletter .eyebrow { justify-content: center; }
+  .newsletter .eyebrow::before { display: none; }
+  .newsletter h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.1; letter-spacing: -0.01em; color: var(--plum-deep); margin-bottom: 24px; }
+  .newsletter h2 em { font-style: italic; color: var(--rose); }
+  .newsletter p { color: var(--muted); margin-bottom: 36px; font-size: 16px; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 520px; margin: 0 auto; padding: 6px; background: #fff; border: 1px solid var(--hairline); border-radius: 999px; }
+  .newsletter-form input { flex: 1; border: none; outline: none; padding: 14px 20px; background: transparent; font-family: inherit; font-size: 14px; color: var(--ink); }
+  .newsletter-form input::placeholder { color: var(--muted); }
+  .newsletter-form button { border: none; cursor: pointer; padding: 14px 28px; border-radius: 999px; background: var(--plum-deep); color: var(--cream); font-family: inherit; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; transition: background .25s; }
+  .newsletter-form button:hover { background: var(--plum); }
+  .privacy-note { font-size: 12px; color: var(--muted); margin-top: 18px; }
+
+  /* FOOTER */
+  footer { background: var(--plum-deep); color: rgba(250, 245, 239, 0.85); padding: 80px 56px 32px; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; padding-bottom: 56px; border-bottom: 1px solid rgba(250, 245, 239, 0.15); }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); margin-bottom: 20px; }
+  .footer-brand em { font-style: italic; color: var(--blush); }
+  .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.6; color: rgba(250, 245, 239, 0.7); max-width: 320px; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 20px; }
+  .footer-col a { display: block; color: rgba(250, 245, 239, 0.8); text-decoration: none; font-size: 14px; padding: 6px 0; transition: color .25s; }
+  .footer-col a:hover { color: var(--blush); }
+  .footer-bottom { max-width: 1180px; margin: 32px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(250, 245, 239, 0.55); flex-wrap: wrap; gap: 16px; }
+  .footer-bottom .heart { color: var(--blush); }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; z-index: 100; background: var(--cream); display: flex; flex-direction: column; padding: 24px; transform: translateX(100%); transition: transform .4s cubic-bezier(.4,0,.2,1); visibility: hidden; }
+  .mobile-menu.open { transform: translateX(0); visibility: visible; }
+  .mobile-menu-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .mobile-menu-logo { height: 64px; width: auto; }
+  .mobile-menu-close { background: none; border: none; cursor: pointer; font-size: 32px; line-height: 1; color: var(--plum-deep); padding: 8px; }
+  .mobile-menu-links { display: flex; flex-direction: column; flex: 1; }
+  .mobile-menu-links a { font-family: 'Playfair Display', serif; font-size: 32px; line-height: 1.2; color: var(--plum-deep); text-decoration: none; padding: 16px 0; border-bottom: 1px solid var(--hairline); transition: color .2s; }
+  .mobile-menu-links a:hover, .mobile-menu-links a:active { color: var(--rose); }
+  .mobile-menu-foot { margin-top: 24px; display: flex; gap: 18px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .mobile-menu-foot a { color: var(--muted); text-decoration: none; }
+
+  .fade-up { opacity: 0; transform: translateY(24px); }
+
+  @media (max-width: 960px) {
+    .nav-inner { padding: 8px 24px; }
+    .nav-brand { margin-left: 0; }
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .page-hero { padding: 140px 24px 64px; }
+    .intro { padding: 64px 24px; }
+    .intro-inner { grid-template-columns: 1fr; gap: 48px; }
+    .intro-image-wrap { max-width: 320px; margin: 0 auto; }
+    .events { padding: 64px 24px 80px; }
+    .event { grid-template-columns: 100px 1fr; gap: 20px; padding: 22px 22px; }
+    .event-cta { grid-column: 1 / -1; padding-top: 8px; border-top: 1px solid var(--hairline); justify-content: flex-end; }
+    .event-date-day { font-size: 36px; }
+    .newsletter { padding: 80px 24px; }
+    footer { padding: 64px 24px 32px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="FEEL Good Always home">
+      <img class="nav-logo" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=500w" alt="FEEL Good Always" />
+    </a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/substack">Substack</a>
+      <a href="/breathwork" class="active">Breathwork</a>
+      <a href="/costa-rica-retreat">Retreat</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <img class="mobile-menu-logo" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=500w" alt="FEEL Good Always" />
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+  </div>
+  <nav class="mobile-menu-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/episodes">Episodes</a>
+    <a href="/substack">Substack</a>
+    <a href="/breathwork">Breathwork</a>
+    <a href="/costa-rica-retreat">Costa Rica Retreat</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.tiktok.com/@feelgoodalwayspodcast" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-cloud c1"></div>
+  <div class="page-hero-cloud c2"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-kicker fade-up">In-person experiences</div>
+    <h1 class="fade-up">Breathwork <em>Events</em>.</h1>
+    <p class="page-hero-sub fade-up">Experience the medicine of your own breath, gather, release, and remember.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-image-wrap fade-up">
+      <div class="intro-image-frame"></div>
+      <div class="intro-image">
+        <img src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/1771729552027-ADYZZBCFK06IJODWYVGW/IMG_4330.jpeg?format=1500w" alt="Becky and Andrea sitting in meditation at a yoga studio" />
+      </div>
+    </div>
+    <div class="intro-text fade-up">
+      <p class="lead">Breathwork is a return to the body, a softening into what is, a reminder that the medicine has always lived inside of you.</p>
+      <p>Each session is a held space to release control, trust the breath, and let the body let go of what it has been carrying. Some events are guided solo by Becky, others are co-held with Andrea. All are welcome.</p>
+      <p>Reserve your mat, come breathe with us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="events">
+  <div class="events-inner">
+    <div class="events-head fade-up">
+      <h2>Upcoming <em>events</em>.</h2>
+    </div>
+    <div class="events-list">
+      <a class="event fade-up" href="#" target="_blank" rel="noopener">
+        <div class="event-date">
+          <div class="event-date-month">Apr</div>
+          <div class="event-date-day">24</div>
+          <div class="event-date-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>Friday</span><span class="dot"></span>
+            <span>6:30 PM – 8:30 PM</span><span class="dot"></span>
+            <span>Zuda Yoga</span>
+          </div>
+          <h3 class="event-title">Breathwork for Freedom, The Art of Surrender</h3>
+          <p class="event-desc">Join Becky Bradley at Zuda Yoga for a breathwork experience devoted to the practice of surrender, softening control, trusting the breath, and allowing the body to release what it has been holding.</p>
+        </div>
+        <span class="event-cta">View Event <span class="arrow">→</span></span>
+      </a>
+
+      <a class="event fade-up" href="#" target="_blank" rel="noopener">
+        <div class="event-date">
+          <div class="event-date-month">May</div>
+          <div class="event-date-day">23</div>
+          <div class="event-date-year">2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span>Saturday</span><span class="dot"></span>
+            <span>5:00 PM – 7:00 PM</span><span class="dot"></span>
+            <span>East Wind Yoga</span>
+          </div>
+          <h3 class="event-title">Breathwork for Freedom at East Wind Yoga</h3>
+          <p class="event-desc">Experience the medicine of your own breath. Join Andrea and Becky at East Wind Yoga for a transformative evening of release, healing, and connection.</p>
+        </div>
+        <span class="event-cta">View Event <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="eyebrow fade-up">Newsletter</div>
+    <h2 class="fade-up">Stay <em>Connected</em>.</h2>
+    <p class="fade-up">Receive channeled messages and FEEL Good Always news straight to your inbox.</p>
+    <form class="newsletter-form fade-up" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Thank you';">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="privacy-note fade-up">We respect your privacy.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">FEEL <em>Good Always</em></div>
+      <p class="footer-tagline">Soul-led stories of love, healing, and awakening, with Becky Bradley.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/about">About</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/substack">Substack</a>
+      <a href="/breathwork">Breathwork</a>
+      <a href="/costa-rica-retreat">Costa Rica Retreat</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@feelgoodalwayspodcast" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/profile.php?id=61579269623389" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 FEEL Good Always</span>
+    <span>Made with <span class="heart">♡</span> in honor of Keira</span>
+  </div>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); });
+
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  function openMenu() { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+  if (navToggle) navToggle.addEventListener('click', openMenu);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
+  if (mobileMenu) mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  gsap.to('.page-hero .fade-up', { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.1, delay: 0.15 });
+  gsap.utils.toArray('section').forEach(section => {
+    if (section.classList.contains('page-hero')) return;
+    gsap.to(section.querySelectorAll('.fade-up'), {
+      opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.12,
+      scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+</script>
+
+</body>
+</html>
