@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Becky | FEEL Good Always</title>
+<meta name="description" content="Meet Becky Bradley, mother, seeker, and intuitive guide of the FEEL Good Always podcast and movement." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --cream: #FAF5EF;
+    --cream-warm: #F2E9DD;
+    --blush: #E8C9C2;
+    --rose: #C99A95;
+    --mauve: #B49EBC;
+    --lavender: #CFC2DD;
+    --plum: #7C5E8E;
+    --plum-deep: #4A3A55;
+    --ink: #2A2330;
+    --muted: #6B5F70;
+    --hairline: rgba(74, 58, 85, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream); color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(250, 245, 239, 0.85);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 4px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav.scrolled { border-bottom-color: var(--hairline); }
+  .nav-brand {
+    display: flex; flex-shrink: 0;
+    margin-left: -58px;
+    transition: transform .3s ease;
+  }
+  .nav-brand:hover { transform: scale(1.03); }
+  .nav-logo { display: block; height: 84px; width: auto; }
+  .nav-links {
+    display: flex; gap: 36px;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-right: -32px;
+  }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    transition: color .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--plum); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--plum-deep); font-size: 22px; }
+
+  /* ============ TYPE / SHARED ============ */
+  .link-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    color: var(--plum-deep); text-decoration: none;
+    padding-bottom: 6px; border-bottom: 1px solid var(--plum-deep);
+    transition: all .3s;
+  }
+  .link-cta:hover { color: var(--rose); border-color: var(--rose); }
+  .link-cta .arrow { transition: transform .3s; display: inline-block; }
+  .link-cta:hover .arrow { transform: translateX(6px); }
+
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--rose); }
+
+  /* ============ HERO (RESTRAINED) ============ */
+  .page-hero {
+    position: relative; overflow: hidden;
+    padding: 200px 56px 80px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(207, 194, 221, 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 90%, rgba(232, 201, 194, 0.4) 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, #F6EEE6 100%);
+  }
+  .page-hero-cloud {
+    position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5;
+    pointer-events: none;
+  }
+  .page-hero-cloud.c1 { width: 420px; height: 420px; top: -100px; left: -60px; background: var(--blush); }
+  .page-hero-cloud.c2 { width: 460px; height: 460px; bottom: -160px; right: -120px; background: var(--lavender); }
+  .page-hero-inner {
+    max-width: 1180px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .page-hero-kicker {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--plum); font-size: 16px; letter-spacing: 0.03em;
+    margin-bottom: 18px;
+  }
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400; font-size: clamp(40px, 5.4vw, 76px);
+    line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--plum-deep);
+    max-width: 760px;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--rose); font-weight: 500; }
+
+  /* ============ STORY ============ */
+  .story {
+    padding: 120px 56px;
+    background: var(--cream);
+  }
+  .story-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; align-items: start;
+  }
+  .story-image-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    max-width: 460px;
+    width: 100%;
+    position: sticky; top: 120px;
+  }
+  .story-image {
+    width: 100%; height: 100%;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 30px 60px -24px rgba(74, 58, 85, 0.3);
+    position: relative; z-index: 2;
+  }
+  .story-image img { width: 100%; height: 100%; object-fit: cover; }
+  .story-image-frame {
+    position: absolute; inset: 24px -24px -24px 24px;
+    border: 1px solid rgba(124, 94, 142, 0.4);
+    border-radius: 12px;
+    z-index: 1;
+  }
+
+  .story-text { padding-top: 8px; }
+  .story-text p {
+    font-size: 17px; line-height: 1.85; color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .story-text p.lead {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; line-height: 1.55; font-style: italic;
+    color: var(--plum-deep);
+    margin-bottom: 32px;
+  }
+  .story-text p strong { font-weight: 500; color: var(--plum-deep); }
+  .story-cta { margin-top: 16px; }
+
+  /* ============ PULL QUOTE ============ */
+  .pull {
+    position: relative; overflow: hidden;
+    padding: 140px 56px;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 30%, rgba(207, 194, 221, 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 70% 70%, rgba(232, 201, 194, 0.5) 0%, transparent 60%),
+      linear-gradient(135deg, #F4E9DC 0%, #EAD9E2 100%);
+  }
+  .pull-inner {
+    max-width: 880px; margin: 0 auto; text-align: center;
+    position: relative; z-index: 2;
+  }
+  .pull-mark {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--rose); font-size: 80px; line-height: 0.5;
+    opacity: 0.5; margin-bottom: 24px;
+  }
+  .pull q {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400; font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.3; letter-spacing: -0.005em;
+    color: var(--plum-deep);
+    quotes: none;
+  }
+  .pull q::before, .pull q::after { content: none; }
+  .pull-attr {
+    margin-top: 36px;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--plum); font-weight: 500;
+  }
+
+  /* ============ INVITATION ============ */
+  .invitation {
+    padding: 120px 56px;
+    background: var(--cream);
+    text-align: center;
+  }
+  .invitation-inner { max-width: 720px; margin: 0 auto; }
+  .invitation .eyebrow { justify-content: center; }
+  .invitation .eyebrow::before { display: none; }
+  .invitation h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400; font-size: clamp(28px, 3.2vw, 42px);
+    line-height: 1.2; letter-spacing: -0.005em;
+    color: var(--plum-deep);
+    margin-bottom: 28px;
+  }
+  .invitation h2 em { font-style: italic; color: var(--rose); }
+  .invitation p {
+    font-size: 17px; line-height: 1.85; color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .invitation p:last-of-type { margin-bottom: 36px; }
+
+  /* ============ NEWSLETTER ============ */
+  .newsletter {
+    padding: 120px 56px;
+    background: var(--cream-warm);
+    text-align: center;
+  }
+  .newsletter-inner { max-width: 640px; margin: 0 auto; }
+  .newsletter .eyebrow { justify-content: center; }
+  .newsletter .eyebrow::before { display: none; }
+  .newsletter h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400; font-size: clamp(32px, 3.6vw, 52px);
+    line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--plum-deep);
+    margin-bottom: 24px;
+  }
+  .newsletter h2 em { font-style: italic; color: var(--rose); }
+  .newsletter p { color: var(--muted); margin-bottom: 36px; font-size: 16px; }
+  .newsletter-form {
+    display: flex; gap: 12px; max-width: 520px; margin: 0 auto;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+  }
+  .newsletter-form input {
+    flex: 1; border: none; outline: none;
+    padding: 14px 20px; background: transparent;
+    font-family: inherit; font-size: 14px; color: var(--ink);
+  }
+  .newsletter-form input::placeholder { color: var(--muted); }
+  .newsletter-form button {
+    border: none; cursor: pointer;
+    padding: 14px 28px; border-radius: 999px;
+    background: var(--plum-deep); color: var(--cream);
+    font-family: inherit; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    transition: background .25s;
+  }
+  .newsletter-form button:hover { background: var(--plum); }
+  .privacy-note { font-size: 12px; color: var(--muted); margin-top: 18px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--plum-deep); color: rgba(250, 245, 239, 0.85);
+    padding: 80px 56px 32px;
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(250, 245, 239, 0.15);
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); margin-bottom: 20px; }
+  .footer-brand em { font-style: italic; color: var(--blush); }
+  .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.6; color: rgba(250, 245, 239, 0.7); max-width: 320px; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 20px; }
+  .footer-col a { display: block; color: rgba(250, 245, 239, 0.8); text-decoration: none; font-size: 14px; padding: 6px 0; transition: color .25s; }
+  .footer-col a:hover { color: var(--blush); }
+  .footer-bottom { max-width: 1180px; margin: 32px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(250, 245, 239, 0.55); flex-wrap: wrap; gap: 16px; }
+  .footer-bottom .heart { color: var(--blush); }
+
+  .fade-up { opacity: 0; transform: translateY(24px); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px) {
+    .nav-inner { padding: 8px 24px; }
+    .nav-brand { margin-left: 0; }
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .page-hero { padding: 140px 24px 64px; }
+    .story { padding: 80px 24px; }
+    .story-inner { grid-template-columns: 1fr; gap: 56px; }
+    .story-image-wrap { position: static; max-width: 360px; margin: 0 auto; }
+    .pull { padding: 96px 24px; }
+    .invitation, .newsletter { padding: 80px 24px; }
+    footer { padding: 64px 24px 32px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="FEEL Good Always home">
+      <img class="nav-logo" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=500w" alt="FEEL Good Always" />
+    </a>
+    <div class="nav-links">
+      <a href="/about" class="active">About</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/substack">Substack</a>
+      <a href="/breathwork">Breathwork</a>
+      <a href="/costa-rica-retreat">Retreat</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-cloud c1"></div>
+  <div class="page-hero-cloud c2"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-kicker fade-up">A note from Becky</div>
+    <h1 class="fade-up">About <em>Becky</em>.</h1>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+    <div class="story-image-wrap fade-up">
+      <div class="story-image-frame"></div>
+      <div class="story-image">
+        <img src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/28ea93b7-0dbe-4816-a07c-ebfd770de0a6/IMG_6169.png?format=2500w" alt="Becky Bradley teaching yoga with children" />
+      </div>
+    </div>
+    <div class="story-text fade-up">
+      <p class="lead">Hi, I'm Becky Bradley. I'm a mom, a seeker, a teacher, a student learning from all that this life is here to teach me, and most of all, I'm a mother on a mission.</p>
+      <p>Together with my daughter Keira, we are working to bring this podcast to you, to bring this Feel Good Always energy onto the earth, to show that separation is an illusion.</p>
+      <p>Since my daughter Keira's transition and the soul crushing grief that came along with that, I have been opened up to be able to see, hear, and feel many things. I have had profound experiences, so many signs, beyond simple synchronicities. I have been shown things that I would have never believed could be possible in the physical world.</p>
+      <p>Keira has connected in this way with many others too, and it is in talking to others about these profound experiences and having these conversations that show me that this is possible for not only me, but for you too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pull">
+  <div class="pull-inner">
+    <div class="pull-mark fade-up">"</div>
+    <q class="fade-up">Separation is an illusion. Anything is possible.</q>
+    <div class="pull-attr fade-up">— Becky</div>
+  </div>
+</section>
+
+<!-- INVITATION -->
+<section class="invitation">
+  <div class="invitation-inner">
+    <div class="eyebrow fade-up">An invitation</div>
+    <h2 class="fade-up">A space for those who feel <em>called</em>.</h2>
+    <p class="fade-up">So that is what we are doing here. We are sharing these real stories of love, connection, and really coming back to remembering who we are and seeing and feeling that separation is an illusion and that anything is possible.</p>
+    <p class="fade-up">If you found yourself here, I do not believe it's by accident. I trust there's something your soul is ready to hear. If you're feeling called to open up to more, to feel more, to trust what we cannot see but what we can feel, please subscribe to the FEEL Good Always podcast and share this space with others so that together we can all move into this new way of being.</p>
+    <p class="fade-up">Whether you've felt the presence of someone you love guiding you from beyond, or you're simply awakening to the deeper connection that holds us all, this space is for you. Let's walk this path together, remembering, feeling, and living connected.</p>
+    <a class="link-cta fade-up" href="/episodes" style="margin-top: 8px;">Listen to the podcast <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="eyebrow fade-up">Newsletter</div>
+    <h2 class="fade-up">Stay <em>Connected</em>.</h2>
+    <p class="fade-up">Receive channeled messages and FEEL Good Always news straight to your inbox.</p>
+    <form class="newsletter-form fade-up" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Thank you';">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="privacy-note fade-up">We respect your privacy.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">FEEL <em>Good Always</em></div>
+      <p class="footer-tagline">Soul-led stories of love, healing, and awakening, with Becky Bradley.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="/about">About</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/substack">Substack</a>
+      <a href="/breathwork">Breathwork</a>
+      <a href="/costa-rica-retreat">Costa Rica Retreat</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@feelgoodalwayspodcast" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/profile.php?id=61579269623389" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 FEEL Good Always</span>
+    <span>Made with <span class="heart">♡</span> in honor of Keira</span>
+  </div>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); });
+
+  // Hero fade
+  gsap.to('.page-hero .fade-up', {
+    opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.1, delay: 0.15
+  });
+  // Section fades
+  gsap.utils.toArray('section').forEach(section => {
+    if (section.classList.contains('page-hero')) return;
+    gsap.to(section.querySelectorAll('.fade-up'), {
+      opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.12,
+      scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' }
+    });
+  });
+</script>
+
+</body>
+</html>
