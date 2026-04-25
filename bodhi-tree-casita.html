@@ -66,7 +66,7 @@
   .nav-links { display: flex; gap: 36px; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; margin-right: -32px; }
   .nav-links a { color: var(--muted); text-decoration: none; transition: color .25s; }
   .nav-links a:hover, .nav-links a.active { color: var(--plum); }
-  .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--plum-deep); font-size: 22px; }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--plum-deep); font-size: 30px; padding: 4px 8px; line-height: 1; }
 
   /* SHARED */
   .link-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; color: var(--plum-deep); text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid var(--plum-deep); transition: all .3s; }
@@ -369,6 +369,7 @@
   /* FOOTER */
   footer { background: var(--plum-deep); color: rgba(250, 245, 239, 0.85); padding: 80px 56px 32px; }
   .footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; padding-bottom: 56px; border-bottom: 1px solid rgba(250, 245, 239, 0.15); }
+  .footer-logo { display: block; height: 20px; width: auto; margin-bottom: 18px; }
   .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); margin-bottom: 20px; }
   .footer-brand em { font-style: italic; color: var(--blush); }
   .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.6; color: rgba(250, 245, 239, 0.7); max-width: 320px; }
@@ -402,7 +403,9 @@
     .gallery { padding: 24px 0 0; }
     .gallery-shell { padding: 0 24px; }
     .gallery-img { flex-basis: 85vw; aspect-ratio: 4 / 3; }
-    .gallery-nav { display: none; }
+    .gallery-nav { width: 36px; height: 36px; font-size: 18px; }
+    .gallery-nav.prev { left: 8px; }
+    .gallery-nav.next { right: 8px; }
     .details { padding: 56px 24px 64px; }
     .details-inner { grid-template-columns: 1fr; gap: 40px; }
     .sidebar { position: static; padding: 24px; }
@@ -470,8 +473,7 @@
       <span class="sep">/</span>
       <span>Casita</span>
     </div>
-    <div class="page-hero-kicker fade-up">Bodhi Tree</div>
-    <h1 class="fade-up">Bodhi Tree <em>Casita</em>.</h1>
+    <h1 class="fade-up"><em>Casita</em>.</h1>
     <div class="page-hero-meta fade-up">
       <span>2 Bedrooms</span>
       <span class="dot"></span>
@@ -631,6 +633,7 @@
 <footer>
   <div class="footer-inner">
     <div>
+      <img class="footer-logo" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=750w" alt="FEEL Good Always" />
       <div class="footer-brand">FEEL <em>Good Always</em></div>
       <p class="footer-tagline">Soul-led stories of love, healing, and awakening, with Becky Bradley.</p>
     </div>
