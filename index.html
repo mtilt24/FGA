@@ -181,6 +181,7 @@
     max-width: 480px; margin-bottom: 40px;
   }
   .hero-ctas { display: inline-flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+  .hero-ctas-mobile { display: none; }
 
   .portrait-wrap {
     position: relative;
@@ -410,8 +411,8 @@
   .watch-frame iframe {
     width: 100%; height: 435px; border: 0; display: block; background: #fff;
   }
-  @media (max-width: 960px) { .watch-frame iframe { height: 365px; } }
-  @media (max-width: 600px) { .watch-frame iframe { height: 275px; } }
+  @media (max-width: 960px) { .watch-frame iframe { height: 325px; } }
+  @media (max-width: 600px) { .watch-frame iframe { height: 235px; } }
 
   /* ============ NEWSLETTER ============ */
   .newsletter {
@@ -535,17 +536,21 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 960px) {
     .nav-inner { padding: 8px 24px; }
-    .nav-links { display: none; }
+    .nav-brand { margin-left: 0; }
+    .nav-links { display: none; margin-right: 0; }
     .nav-toggle { display: block; }
-    .hero { padding: 120px 24px 80px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 56px; }
-    .hero-text { text-align: center; }
+    .hero { padding: 150px 24px 64px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .hero-text { text-align: center; display: contents; }
     .hero-sub { margin-left: auto; margin-right: auto; }
     .hero-ctas { justify-content: center; }
-    .portrait-wrap { max-width: 340px; margin: 0 auto; }
+    .hero-ctas-desktop { display: none; }
+    .hero-ctas-mobile { display: inline-flex; }
+    .portrait-wrap { max-width: 320px; margin: 0 auto; margin-top: 0; }
+    .watch-frame iframe { height: 325px; }
     section.block { padding: 96px 24px; }
     .episode-grid, .about-grid, .substack-layout { grid-template-columns: 1fr; gap: 56px; }
-    .about-image-wrap { max-width: 320px; margin: 0 auto; }
+    .about-image-wrap { max-width: 320px; margin: 0 auto; order: -1; }
     .footer-inner { grid-template-columns: 1fr; gap: 40px; text-align: left; }
     footer { padding: 64px 24px 32px; }
   }
@@ -603,7 +608,7 @@
       <div class="hero-eyebrow fade-up">The FEEL Good Always Podcast</div>
       <h1 class="fade-up">A soul-led movement to <em>FEEL</em> everything, trust the unseen, and live fully.</h1>
       <p class="hero-sub fade-up">A sacred space for real stories of love, healing, and awakening.</p>
-      <div class="hero-ctas fade-up">
+      <div class="hero-ctas hero-ctas-desktop fade-up">
         <a class="link-cta" href="#latest">Listen to the latest episode <span class="arrow">→</span></a>
         <a class="link-cta quiet" href="substack.html">Read on Substack <span class="arrow">→</span></a>
       </div>
@@ -614,6 +619,10 @@
       <div class="portrait">
         <img src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/c037f78d-a3b9-420f-b1f8-8707e6b1dc44/centered.jpg?format=1000w" alt="Becky Bradley" />
       </div>
+    </div>
+    <div class="hero-ctas hero-ctas-mobile fade-up">
+      <a class="link-cta" href="#latest">Listen to the latest episode <span class="arrow">→</span></a>
+      <a class="link-cta quiet" href="substack.html">Read on Substack <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -731,7 +740,6 @@
   <div class="footer-inner">
     <div>
       <img class="footer-logo" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=750w" alt="FEEL Good Always" />
-      <div class="footer-brand">FEEL <em>Good Always</em></div>
       <p class="footer-tagline">Soul-led stories of love, healing, and awakening, with Becky Bradley.</p>
     </div>
     <div class="footer-col">
