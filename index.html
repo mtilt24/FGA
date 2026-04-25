@@ -69,7 +69,8 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
   body {
     background: var(--cream); color: var(--ink);
     font-family: 'Poppins', sans-serif;
@@ -537,7 +538,7 @@
     .hero-ctas { justify-content: center; }
     .hero-ctas-desktop { display: none; }
     .hero-ctas-mobile { display: inline-flex; }
-    .portrait-wrap { max-width: 320px; margin: -32px auto 0; }
+    .portrait-wrap { max-width: 320px; margin: 0 auto; transform: translateY(-42px); }
     .watch-frame iframe { height: 325px; }
     section.block { padding: 96px 24px; }
     .episode-grid, .about-grid, .substack-layout { grid-template-columns: 1fr; gap: 56px; }
