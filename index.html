@@ -247,9 +247,7 @@
 
   /* ============ EPISODE / PODCAST ============ */
   .episode {
-    background: var(--cream);
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
+    background: var(--cream-warm);
   }
   .episode-grid {
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 100px; align-items: center;
@@ -277,19 +275,18 @@
     bottom: -80px; left: -80px; filter: blur(20px);
   }
   .episode-card-top, .episode-card-player { position: relative; z-index: 2; }
-  .episode-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .episode-card-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(74, 58, 85, 0.15);
+  }
   .episode-card-label {
     font-family: 'Playfair Display', serif; font-style: italic;
-    color: var(--plum-deep); font-size: 15px;
+    color: var(--plum-deep); font-size: 17px;
   }
   .episode-card-tag {
     font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--plum-deep); opacity: 0.7;
-  }
-  .episode-card-mark {
-    width: 72px; height: auto; opacity: 0.95;
-    margin: 0 auto;
-    position: relative; z-index: 2;
+    color: var(--rose); font-weight: 500;
   }
   .episode-card-player {
     background: rgba(255, 255, 255, 0.5);
@@ -412,8 +409,8 @@
   .watch-frame iframe {
     width: 100%; height: 435px; border: 0; display: block; background: #fff;
   }
-  @media (max-width: 960px) { .watch-frame iframe { height: 325px; } }
-  @media (max-width: 600px) { .watch-frame iframe { height: 235px; } }
+  @media (max-width: 960px) { .watch-frame iframe { height: 245px; } }
+  @media (max-width: 600px) { .watch-frame iframe { height: 155px; } }
 
   /* ============ NEWSLETTER ============ */
   .newsletter {
@@ -538,8 +535,9 @@
     .hero-ctas { justify-content: center; }
     .hero-ctas-desktop { display: none; }
     .hero-ctas-mobile { display: inline-flex; }
-    .portrait-wrap { max-width: 320px; margin: 0 auto; transform: translateY(-42px); }
-    .watch-frame iframe { height: 325px; }
+    .portrait-wrap { max-width: 320px; margin: 0 auto; transform: translateY(-72px); }
+    .hero-ctas-mobile { display: inline-flex; margin-top: 20px; }
+    .watch-frame iframe { height: 245px; }
     section.block { padding: 96px 24px; }
     .episode-grid, .about-grid, .substack-layout { grid-template-columns: 1fr; gap: 56px; }
     .about-image-wrap { max-width: 320px; margin: 0 auto; order: -1; }
@@ -628,7 +626,6 @@
           <span class="episode-card-label">FEEL Good Always</span>
           <span class="episode-card-tag">Latest Episode</span>
         </div>
-        <img class="episode-card-mark" src="https://images.squarespace-cdn.com/content/v1/6897a11d8764414f972dd3bd/846a2616-227b-42be-a8c2-4a0df5cf5dfe/FGA+Logo+V3+No+bg.png?format=500w" alt="FEEL Good Always" />
         <div class="episode-card-player">
           <div id="buzzsprout-small-player"></div>
           <script type="text/javascript" charset="utf-8" src="https://www.buzzsprout.com/2469967.js?container_id=buzzsprout-small-player&player=small&limit=1"></script>
