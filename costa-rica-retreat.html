@@ -401,14 +401,13 @@
     font-size: 12px; color: var(--muted); margin-bottom: 18px;
   }
   .room-desc { font-size: 14.5px; line-height: 1.65; color: var(--muted); margin-bottom: 18px; }
-  .room-features { list-style: none; padding: 0; margin-bottom: 24px; }
+  .room-features { list-style: none; list-style-type: none; padding: 0; padding-inline-start: 0; margin-bottom: 24px; }
   .room-features li {
+    list-style: none;
     font-size: 13.5px; color: var(--ink);
-    padding: 7px 0; border-bottom: 1px solid var(--hairline);
-    display: flex; gap: 10px; align-items: flex-start;
+    padding: 9px 0; border-bottom: 1px solid var(--hairline);
   }
   .room-features li:last-child { border-bottom: none; }
-  .room-features li::before { content: '·'; color: var(--rose); font-size: 22px; line-height: 0.8; margin-top: 4px; flex-shrink: 0; }
   .room-cta {
     margin-top: auto;
     font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;

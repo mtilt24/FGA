@@ -139,6 +139,18 @@
   .link-cta.quiet { color: var(--muted); border-color: rgba(74,58,85,0.2); }
   .link-cta.quiet:hover { color: var(--plum); border-color: var(--plum); }
 
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 32px; border-radius: 999px;
+    background: var(--plum-deep); color: var(--cream);
+    font-family: inherit; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all .3s ease;
+  }
+  .btn-primary:hover { background: var(--plum); transform: translateY(-2px); }
+  .btn-primary .arrow { transition: transform .3s; display: inline-block; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
   /* ============ HERO ============ */
   .hero {
     position: relative; min-height: 100vh; overflow: hidden;
@@ -409,8 +421,8 @@
   .watch-frame iframe {
     width: 100%; height: 435px; border: 0; display: block; background: #fff;
   }
-  @media (max-width: 960px) { .watch-frame iframe { height: 245px; } }
-  @media (max-width: 600px) { .watch-frame iframe { height: 155px; } }
+  @media (max-width: 960px) { .watch-frame iframe { height: 215px; } }
+  @media (max-width: 600px) { .watch-frame iframe { height: 125px; } }
 
   /* ============ NEWSLETTER ============ */
   .newsletter {
@@ -449,6 +461,7 @@
     padding-bottom: 56px;
     border-bottom: 1px solid rgba(250, 245, 239, 0.15);
   }
+  .footer-logo { display: block; height: 72px; width: auto; margin-bottom: 18px; }
   .footer-brand {
     font-family: 'Playfair Display', serif; font-size: 22px;
     color: var(--cream); margin-bottom: 20px;
@@ -538,7 +551,7 @@
     .portrait-wrap { max-width: 320px; margin: 0 auto; transform: translateY(-97px); }
     .hero-ctas-mobile { display: inline-flex; margin-top: 30px; }
     .episode-card-top { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .watch-frame iframe { height: 245px; }
+    .watch-frame iframe { height: 215px; }
     section.block { padding: 96px 24px; }
     .episode-grid, .about-grid, .substack-layout { grid-template-columns: 1fr; gap: 56px; }
     .about-image-wrap { max-width: 320px; margin: 0 auto; order: -1; }
@@ -642,7 +655,7 @@
           <a class="platform" href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
         </div>
         <div style="margin-top: 36px;">
-          <a class="link-cta" href="episodes.html">Go to all episodes <span class="arrow">→</span></a>
+          <a class="btn-primary" href="episodes.html">Go to all episodes <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -661,7 +674,7 @@
           <strong>For Keira.</strong> Every story, every signal, every space we hold is in honor of her, and of the unseen love that connects us all.
         </div>
         <div style="margin-top: 36px;">
-          <a class="link-cta" href="about.html">Learn more <span class="arrow">→</span></a>
+          <a class="btn-primary" href="about.html">Learn more <span class="arrow">→</span></a>
         </div>
       </div>
       <div class="about-image-wrap fade-up">
@@ -690,7 +703,7 @@
           Every subscription carries Keira's light forward, helping those in need.
         </div>
         <div style="margin-top: 32px;">
-          <a class="link-cta" href="substack.html">Go to all posts <span class="arrow">→</span></a>
+          <a class="btn-primary" href="substack.html" style="background: var(--cream); color: var(--plum-deep);">Go to all posts <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
