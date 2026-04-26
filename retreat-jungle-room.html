@@ -672,7 +672,13 @@
     const prev = shell.querySelector('.gallery-nav.prev');
     const next = shell.querySelector('.gallery-nav.next');
     if (!carousel) return;
-    const step = () => carousel.clientWidth * 0.7;
+    const step = () => {
+      const img = carousel.querySelector('.gallery-img');
+      if (!img) return carousel.clientWidth * 0.7;
+      const styles = getComputedStyle(carousel);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 16;
+      return img.getBoundingClientRect().width + gap;
+    };
     if (prev) prev.addEventListener('click', () => carousel.scrollBy({ left: -step(), behavior: 'smooth' }));
     if (next) next.addEventListener('click', () => carousel.scrollBy({ left: step(), behavior: 'smooth' }));
   });
