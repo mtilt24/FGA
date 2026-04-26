@@ -280,18 +280,16 @@
   }
   .newsletter h2 em { font-style: italic; color: var(--rose); }
   .newsletter p { color: var(--muted); margin-bottom: 36px; font-size: 16px; }
-  .newsletter-form { display: flex; gap: 12px; width: 100%; max-width: 520px; margin: 0 auto; padding: 6px; background: #fff; border: 1px solid var(--hairline); border-radius: 999px; box-sizing: border-box; }
-  .newsletter-form input { flex: 1; min-width: 0; border: none; outline: none;
-    padding: 14px 20px; background: transparent;
-    font-family: inherit; font-size: 14px; color: var(--ink);
-  }
+    .newsletter-form { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 520px; margin: 0 auto; box-sizing: border-box; }
+  .newsletter-row { display: flex; gap: 12px; }
+  .newsletter-form input[type="text"], .newsletter-form input[type="email"] { flex: 1; min-width: 0; border: 1px solid var(--hairline); outline: none; padding: 14px 20px; background: #fff; font-family: inherit; font-size: 14px; color: var(--ink); border-radius: 999px; box-sizing: border-box; transition: border-color .2s; }
+  .newsletter-form input[type="text"]:focus, .newsletter-form input[type="email"]:focus { border-color: var(--plum); }
   .newsletter-form input::placeholder { color: var(--muted); }
-  .newsletter-form button { flex-shrink: 0; border: none; cursor: pointer; padding: 14px 22px; border-radius: 999px;
-    background: var(--plum-deep); color: var(--cream);
-    font-family: inherit; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500;
-    transition: background .25s;
-  }
+  .newsletter-check { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); cursor: pointer; padding: 4px 4px 4px 8px; }
+  .newsletter-check input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--plum); cursor: pointer; flex: none; margin: 0; }
+  .newsletter-form button { border: none; cursor: pointer; padding: 14px 22px; border-radius: 999px; background: var(--plum-deep); color: var(--cream); font-family: inherit; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; transition: background .25s; }
   .newsletter-form button:hover { background: var(--plum); }
+  @media (max-width: 540px) { .newsletter-row { flex-direction: column; } }
   .privacy-note { font-size: 12px; color: var(--muted); margin-top: 18px; }
 
   /* FOOTER */
@@ -442,7 +440,15 @@
     <h2 class="fade-up">Stay <em>Connected</em>.</h2>
     <p class="fade-up">Receive channeled messages and FEEL Good Always news straight to your inbox.</p>
     <form class="newsletter-form fade-up" action="https://feelgoodalways.us19.list-manage.com/subscribe/post?u=0343e911f5a2ec48c86cc94ae&amp;id=3366db0629&amp;f_id=0063ebe4f0" method="post" target="_blank" novalidate>
+      <div class="newsletter-row">
+        <input type="text" name="FNAME" placeholder="First name" required />
+        <input type="text" name="LNAME" placeholder="Last name" required />
+      </div>
       <input type="email" name="EMAIL" placeholder="your@email.com" required />
+      <label class="newsletter-check">
+        <input type="checkbox" name="group[177399][1]" value="1" />
+        <span>Yes, send me Becky's channeled messages</span>
+      </label>
       <button type="submit">Sign Up</button>
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_0343e911f5a2ec48c86cc94ae_3366db0629" tabindex="-1" value="" /></div>
     </form>
