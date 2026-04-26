@@ -401,6 +401,11 @@
   .room-note {
     font-size: 12px; color: var(--muted); margin-bottom: 18px;
   }
+  .room-note.sold-out { color: var(--rose); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .room-note.urgent { color: var(--rose); font-weight: 500; }
+  .room.sold-out { opacity: 0.72; }
+  .room.sold-out:hover { transform: none; box-shadow: none; border-color: var(--hairline); }
+  .room.sold-out .room-img { filter: grayscale(0.4); }
   .room-desc { font-size: 14.5px; line-height: 1.65; color: var(--muted); margin-bottom: 18px; }
   .room-features { list-style: none; list-style-type: none; padding: 0; padding-inline-start: 0; margin-bottom: 24px; }
   .room-features li {
@@ -757,12 +762,12 @@
     <p>All rooms are double occupancy and include the full retreat experience. Save $100 paying in full via Venmo.</p>
   </div>
   <div class="rooms-grid">
-    <a class="room fade-up" href="retreat-jungle-room.html">
+    <a class="room sold-out fade-up" href="retreat-jungle-room.html">
       <div class="room-img" style="background-image:url('https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_1000/FGA/jungle-rooms')"></div>
       <div class="room-body">
         <div class="room-name">Jungle Room</div>
         <div class="room-price"><strong>$3,449</strong> per person</div>
-        <div class="room-note">2 rooms available</div>
+        <div class="room-note sold-out">Sold out</div>
         <p class="room-desc">A peaceful retreat tucked deep in the trees, quiet, grounding, and full of Costa Rican magic.</p>
         <ul class="room-features">
           <li>2 Queen Beds</li>
@@ -796,7 +801,7 @@
       <div class="room-body">
         <div class="room-name">Casita</div>
         <div class="room-price"><strong>$3,699</strong> per person</div>
-        <div class="room-note">4 Casitas available</div>
+        <div class="room-note urgent">Only 2 left!</div>
         <p class="room-desc">A spacious jungle casita with two bedrooms, perfect for friends who love community.</p>
         <ul class="room-features">
           <li>2 Bedrooms, 1 Bathroom</li>
