@@ -109,7 +109,19 @@
     transition: background .25s, transform .25s;
   }
   .signup-form button:hover { background: var(--plum); transform: translateY(-1px); }
+  .signup-form button[disabled] { opacity: 0.6; cursor: default; transform: none; }
   .form-note { font-size: 12.5px; color: var(--muted); margin-top: 18px; }
+  .form-msg {
+    max-width: 520px; margin: 16px auto 0;
+    font-size: 14.5px; line-height: 1.6;
+    display: none;
+  }
+  .form-msg.show { display: block; }
+  .form-msg.ok {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 19px; color: var(--plum-deep);
+  }
+  .form-msg.err { color: #A4514B; }
   @media (max-width: 560px) {
     .signup-form { flex-direction: column; }
     .signup-form button { width: 100%; }
@@ -252,8 +264,9 @@
       <input type="email" name="EMAIL" placeholder="your@email.com" aria-label="Email address" required />
       <button type="submit">Sign Me Up</button>
       <input type="hidden" name="tags" value="6308781" />
-      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_0343e911f5a2ec48c86cc94ae_3366db0629" tabindex="-1" value="" /></div>
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="website" tabindex="-1" value="" autocomplete="off" /></div>
     </form>
+    <div class="form-msg" role="status" aria-live="polite"></div>
     <div class="form-note fade-up">Free to join. Unsubscribe anytime. We respect your privacy.</div>
   </div>
 </section>
@@ -316,8 +329,9 @@
       <input type="email" name="EMAIL" placeholder="your@email.com" aria-label="Email address" required />
       <button type="submit">Sign Me Up</button>
       <input type="hidden" name="tags" value="6308781" />
-      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_0343e911f5a2ec48c86cc94ae_3366db0629" tabindex="-1" value="" /></div>
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="website" tabindex="-1" value="" autocomplete="off" /></div>
     </form>
+    <div class="form-msg" role="status" aria-live="polite"></div>
     <div class="form-note fade-up">Free to join. Unsubscribe anytime.</div>
   </div>
 </section>
@@ -347,6 +361,49 @@
     gsap.to(section.querySelectorAll('.fade-up'), {
       opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.1,
       scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+
+  // Submit through our own endpoint so we can tag the signup and stay on the page.
+  // If JS fails the form still posts straight to Mailchimp via its action attribute.
+  document.querySelectorAll('.signup-form').forEach(form => {
+    const msg = form.parentElement.querySelector('.form-msg');
+    const button = form.querySelector('button');
+    const label = button.textContent;
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = form.querySelector('input[name="EMAIL"]').value.trim();
+      const website = form.querySelector('input[name="website"]').value;
+
+      msg.className = 'form-msg';
+      button.disabled = true;
+      button.textContent = 'Signing up…';
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, website })
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.ok) {
+          form.style.display = 'none';
+          msg.textContent = data.message || "You're in. Watch your inbox.";
+          msg.className = 'form-msg ok show';
+        } else {
+          msg.textContent = data.error || "We couldn't sign you up just now. Please try again.";
+          msg.className = 'form-msg err show';
+          button.disabled = false;
+          button.textContent = label;
+        }
+      } catch (err) {
+        msg.textContent = "We couldn't reach the server. Please check your connection and try again.";
+        msg.className = 'form-msg err show';
+        button.disabled = false;
+        button.textContent = label;
+      }
     });
   });
 </script>
