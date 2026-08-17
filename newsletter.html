@@ -28,7 +28,7 @@
     --cream: #FAF5EF;
     --cream-warm: #F2E9DD;
     --blush: #E8C9C2;
-    --rose: #C99A95;
+    --rose: #DD6490;
     --mauve: #B49EBC;
     --lavender: #CFC2DD;
     --plum: #7C5E8E;
@@ -171,13 +171,18 @@
     border-color: rgba(124, 94, 142, 0.3);
   }
   .why-card-num {
-    font-family: 'Playfair Display', serif; font-style: italic;
-    font-size: 22px; color: var(--rose); margin-bottom: 12px;
+    font-size: 11px; letter-spacing: 0.24em; font-weight: 500;
+    color: var(--pink); margin-bottom: 14px;
   }
   .why-card h3 {
     font-family: 'Playfair Display', serif;
-    font-weight: 400; font-size: 22px; line-height: 1.25;
-    color: var(--plum-deep); margin-bottom: 12px;
+    font-weight: 500; font-size: 25px; line-height: 1.22;
+    color: var(--plum-deep); margin-bottom: 16px;
+  }
+  .why-card h3::after {
+    content: ''; display: block;
+    width: 34px; height: 2px; margin-top: 14px;
+    background: var(--pink); border-radius: 2px;
   }
   .why-card p { font-size: 15px; line-height: 1.75; color: var(--muted); }
 
