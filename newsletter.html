@@ -32,7 +32,7 @@
     --cream: #FAF5EF;
     --cream-warm: #F2E9DD;
     --blush: #E8C9C2;
-    --rose: #C2185B;
+    --rose: #D12E6A;
     --mauve: #B49EBC;
     --lavender: #CFC2DD;
     --plum: #7C5E8E;
@@ -40,11 +40,23 @@
     --ink: #2A2330;
     --muted: #6B5F70;
     --hairline: rgba(74, 58, 85, 0.12);
-    --pink: #C2185B;
+    --pink: #D12E6A;
+    --pink-deep: #B02759;
+    --pink-wash: rgba(209, 46, 106, 0.13);
   }
 
-  /* Deep pink headline highlight */
-  .hl { color: var(--pink); font-style: italic; font-weight: 500; }
+  /* Bright pink headline highlight, on a soft pink wash */
+  .hl {
+    color: var(--pink); font-style: italic; font-weight: 500;
+    background-image: linear-gradient(var(--pink-wash), var(--pink-wash));
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 95%;
+    padding: 0 0.08em;
+    border-radius: 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -132,10 +144,14 @@
     background: var(--pink); color: #fff;
     font-family: inherit; font-size: 12px; letter-spacing: 0.14em;
     text-transform: uppercase; font-weight: 600;
-    transition: background .25s, transform .25s;
+    box-shadow: 0 12px 26px -10px rgba(209, 46, 106, 0.55);
+    transition: background .25s, transform .25s, box-shadow .25s;
   }
-  .signup-form button:hover { background: #9E1249; transform: translateY(-1px); }
-  .signup-form button[disabled] { opacity: 0.6; cursor: default; transform: none; }
+  .signup-form button:hover {
+    background: var(--pink-deep); transform: translateY(-1px);
+    box-shadow: 0 16px 32px -10px rgba(209, 46, 106, 0.65);
+  }
+  .signup-form button[disabled] { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
   .form-note { font-size: 12.5px; color: var(--muted); margin-top: 18px; }
   .form-msg {
     max-width: 520px; margin: 16px auto 0;
