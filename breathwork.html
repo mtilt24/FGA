@@ -19,30 +19,6 @@
 <meta name="twitter:title" content="Breathwork Events · Sacramento & Auburn CA | FEEL Good Always" />
 <meta name="twitter:description" content="Breathwork with Becky Bradley at Zuda Yoga (Sacramento) and East Wind Yoga (Auburn, CA)." />
 <meta name="twitter:image" content="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_1500/FGA/img-4330" />
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "Breathwork for Freedom at East Wind Yoga",
-    "startDate": "2026-05-23T17:00",
-    "endDate": "2026-05-23T19:00",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {
-      "@type": "Place",
-      "name": "East Wind Yoga"
-    },
-    "image": "https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_1500/FGA/img-4330",
-    "description": "Experience the medicine of your own breath. Join Andrea and Becky at East Wind Yoga for a transformative evening of release, healing, and connection.",
-    "organizer": { "@type": "Organization", "name": "FEEL Good Always", "url": "https://www.feelgoodalways.org/" },
-    "performer": [
-      { "@type": "Person", "name": "Becky Bradley" },
-      { "@type": "Person", "name": "Andrea" }
-    ]
-  }
-]
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -162,6 +138,23 @@
   .events-head h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.15; color: var(--plum-deep); }
   .events-head h2 em { font-style: italic; color: var(--rose); }
   .events-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .events-empty {
+    background: #fff;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 46px 32px;
+    text-align: center;
+  }
+  .events-empty p {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 21px; line-height: 1.5; color: var(--plum-deep);
+    margin-bottom: 10px;
+  }
+  .events-empty span {
+    display: block; max-width: 420px; margin: 0 auto;
+    font-size: 14.5px; line-height: 1.7; color: var(--muted);
+  }
 
   .event {
     display: grid;
@@ -374,24 +367,9 @@
     <div class="events-head fade-up">
       <h2>Upcoming <em>events</em>.</h2>
     </div>
-    <div class="events-list">
-      <a class="event fade-up" href="https://clients.mindbodyonline.com/classic/ws?studioid=882&amp;stype=-8&amp;sLoc=2" target="_blank" rel="noopener">
-        <div class="event-date">
-          <div class="event-date-month">May</div>
-          <div class="event-date-day">23</div>
-          <div class="event-date-year">2026</div>
-        </div>
-        <div class="event-body">
-          <div class="event-meta">
-            <span>Saturday</span><span class="dot"></span>
-            <span>5:00 PM – 7:00 PM</span><span class="dot"></span>
-            <span>East Wind Yoga</span>
-          </div>
-          <h3 class="event-title">Breathwork for Freedom at East Wind Yoga</h3>
-          <p class="event-desc">Experience the medicine of your own breath. Join Andrea and Becky at East Wind Yoga for a transformative evening of release, healing, and connection.</p>
-        </div>
-        <span class="event-cta">View Event <span class="arrow">→</span></span>
-      </a>
+    <div class="events-empty fade-up">
+      <p>No dates on the calendar right now.</p>
+      <span>New sessions are announced in the newsletter first. Sign up below and you will hear as soon as the next one is set.</span>
     </div>
   </div>
 </section>
