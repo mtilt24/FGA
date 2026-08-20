@@ -546,6 +546,8 @@
         const data = await res.json().catch(() => ({}));
 
         if (res.ok && data.ok) {
+          // Signed up here, so don't pop the newsletter modal at them elsewhere.
+          try { localStorage.setItem('fga_newsletter_popup_seen', '1'); } catch (err) {}
           form.style.display = 'none';
           msg.textContent = data.message || "You're in. Watch your inbox.";
           msg.className = 'form-msg ok show';

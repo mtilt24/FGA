@@ -3,7 +3,10 @@ const crypto = require('crypto');
 // Set to 'pending' if you want Mailchimp to send its confirmation email
 // before adding someone to the list (double opt-in).
 const NEW_MEMBER_STATUS = 'subscribed';
-const TAG = 'Landing Page';
+// Where the signup came from, so Mailchimp can tell the sources apart.
+// Anything unrecognised falls back to the landing page tag.
+const TAGS = { 'landing-page': 'Landing Page', popup: 'Popup' };
+const DEFAULT_TAG = TAGS['landing-page'];
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -19,6 +22,7 @@ module.exports = async (req, res) => {
 
   const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
   const email = String(body.email || '').trim().toLowerCase();
+  const tag = TAGS[String(body.source || '').toLowerCase()] || DEFAULT_TAG;
 
   // Honeypot: real people leave this empty.
   if (body.website) return res.status(200).json({ ok: true });
@@ -59,7 +63,7 @@ module.exports = async (req, res) => {
     const tagged = await fetch(`${base}/members/${hash}/tags`, {
       method: 'POST',
       headers: { Authorization: auth, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ tags: [{ name: TAG, status: 'active' }] })
+      body: JSON.stringify({ tags: [{ name: tag, status: 'active' }] })
     });
     if (!tagged.ok) console.error('Mailchimp tagging failed', tagged.status, await tagged.text());
 
