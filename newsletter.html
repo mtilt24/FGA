@@ -57,16 +57,6 @@
   }
   img { max-width: 100%; display: block; }
 
-  /* HEADER (logo only, no nav) */
-  .lp-header {
-    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
-    display: flex; justify-content: center;
-    padding: 8px 24px 0;
-  }
-  .lp-header a { display: block; transition: transform .3s ease; }
-  .lp-header a:hover { transform: scale(1.03); }
-  .lp-logo { height: 104px; width: auto; }
-
   /* HERO */
   .hero {
     position: relative; overflow: hidden;
@@ -248,26 +238,93 @@
   .closing h2 em { font-style: italic; color: var(--rose); }
   .closing p { color: var(--muted); font-size: 16.5px; line-height: 1.7; }
 
-  /* FOOTER */
-  .lp-footer {
-    background: var(--plum-deep); color: rgba(250, 245, 239, 0.7);
-    padding: 48px 32px 40px; text-align: center;
+  /* ============ NAV ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(250, 245, 239, 0.85);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
   }
-  .lp-footer-logo { height: 96px; width: auto; margin: 0 auto 20px; }
-  .lp-footer-links {
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 26px;
-    font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
-    margin-bottom: 28px;
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto;
+    padding: 4px 56px;
+    display: flex; justify-content: space-between; align-items: center;
   }
-  .lp-footer-links a { color: rgba(250, 245, 239, 0.8); text-decoration: none; transition: color .25s; }
-  .lp-footer-links a:hover { color: var(--blush); }
-  .lp-footer-bottom { font-size: 12px; color: rgba(250, 245, 239, 0.5); }
-  .lp-footer-bottom a { color: inherit; text-decoration: underline; }
+  .nav.scrolled { border-bottom-color: var(--hairline); }
+  .nav-brand {
+    display: flex; flex-shrink: 0;
+    margin-left: -58px;
+    transition: transform .3s ease;
+  }
+  .nav-brand:hover { transform: scale(1.03); }
+  .nav-logo { display: block; height: 100px; width: auto; }
+  .nav-links {
+    display: flex; gap: 36px;
+    font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-right: -42px;
+  }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    transition: color .25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--plum); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--plum-deep); font-size: 30px; padding: 4px 8px; line-height: 1; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--plum-deep); color: rgba(250, 245, 239, 0.85);
+    padding: 80px 56px 32px;
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(250, 245, 239, 0.15);
+  }
+  .footer-logo { display: block; height: 144px; width: auto; margin-bottom: 18px; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); margin-bottom: 20px; }
+  .footer-brand em { font-style: italic; color: var(--blush); }
+  .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.6; color: rgba(250, 245, 239, 0.7); max-width: 320px; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); font-weight: 500; margin-bottom: 20px; }
+  .footer-col a { display: block; color: rgba(250, 245, 239, 0.8); text-decoration: none; font-size: 14px; padding: 6px 0; transition: color .25s; }
+  .footer-col a:hover { color: var(--blush); }
+  .footer-bottom { max-width: 1180px; margin: 32px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(250, 245, 239, 0.55); flex-wrap: wrap; gap: 16px; }
+  .footer-bottom .heart { color: var(--blush); }
+  .footer-credit { max-width: 1180px; margin: 12px auto 0; text-align: center; font-size: 11px; color: rgba(250, 245, 239, 0.4); }
+  .footer-credit a { color: rgba(250, 245, 239, 0.6); text-decoration: underline; }
+  .footer-credit .heart { color: inherit; }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--cream);
+    display: flex; flex-direction: column;
+    padding: 24px;
+    transform: translateX(100%);
+    transition: transform .4s cubic-bezier(.4,0,.2,1);
+    visibility: hidden;
+  }
+  .mobile-menu.open { transform: translateX(0); visibility: visible; }
+  .mobile-menu-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .mobile-menu-logo { height: 64px; width: auto; }
+  .mobile-menu-close { background: none; border: none; cursor: pointer; font-size: 32px; line-height: 1; color: var(--plum-deep); padding: 8px; }
+  .mobile-menu-links { display: flex; flex-direction: column; flex: 1; }
+  .mobile-menu-links a { font-family: 'Playfair Display', serif; font-size: 32px; line-height: 1.2; color: var(--plum-deep); text-decoration: none; padding: 16px 0; border-bottom: 1px solid var(--hairline); transition: color .2s; }
+  .mobile-menu-links a:hover, .mobile-menu-links a:active { color: var(--rose); }
+  .mobile-menu-foot { margin-top: 24px; display: flex; gap: 18px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .mobile-menu-foot a { color: var(--muted); text-decoration: none; }
 
   .fade-up { opacity: 0; transform: translateY(24px); }
 
-  @media (max-width: 900px) {
-    .lp-logo { height: 84px; }
+  @media (max-width: 960px) {
+    .nav-inner { padding: 8px 24px; }
+    .nav-brand { margin-left: 0; }
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    footer { padding: 64px 24px 32px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero { padding: 138px 24px 76px; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .signup-card { padding: 32px 26px; }
@@ -283,12 +340,45 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="lp-header">
-  <a href="./" aria-label="FEEL Good Always home">
-    <img class="lp-logo" src="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_500/FGA/fga-logo-v3-no-bg" alt="FEEL Good Always" />
-  </a>
-</header>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="./" class="nav-brand" aria-label="FEEL Good Always home">
+      <img class="nav-logo" src="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_500/FGA/fga-logo-v3-no-bg" alt="FEEL Good Always" />
+    </a>
+    <div class="nav-links">
+      <a href="about">About</a>
+      <a href="episodes">Episodes</a>
+      <a href="newsletter" class="active">Newsletter</a>
+      <a href="breathwork">Breathwork</a>
+      <a href="costa-rica-retreat">Retreat</a>
+      <a href="contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <img class="mobile-menu-logo" src="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_500/FGA/fga-logo-v3-no-bg" alt="FEEL Good Always" />
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+  </div>
+  <nav class="mobile-menu-links">
+    <a href="./">Home</a>
+    <a href="about">About</a>
+    <a href="episodes">Episodes</a>
+    <a href="newsletter">Newsletter</a>
+    <a href="breathwork">Breathwork</a>
+    <a href="costa-rica-retreat">Costa Rica Retreat</a>
+    <a href="contact">Contact</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.tiktok.com/@feelgoodalwayspodcast" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</aside>
 
 <!-- HERO -->
 <section class="hero">
@@ -376,22 +466,50 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="lp-footer">
-  <img class="lp-footer-logo" src="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_750/FGA/fga-logo-v3-no-bg" alt="FEEL Good Always" />
-  <div class="lp-footer-links">
-    <a href="./">Home</a>
-    <a href="about">About</a>
-    <a href="episodes">Episodes</a>
-    <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img class="footer-logo" src="https://res.cloudinary.com/dstssdnoj/image/upload/f_auto,q_auto,w_750/FGA/fga-logo-v3-no-bg" alt="FEEL Good Always" />
+      <p class="footer-tagline">Soul-led stories of love, healing, and awakening, with Becky Bradley.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="about">About</a>
+      <a href="episodes">Episodes</a>
+      <a href="newsletter">Newsletter</a>
+      <a href="substack">Substack</a>
+      <a href="breathwork">Breathwork</a>
+      <a href="costa-rica-retreat">Costa Rica Retreat</a>
+      <a href="contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/feelgoodalwayspodcast/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/channel/UC-gv9lJIXjty5TMnxnob6eQ" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@feelgoodalwayspodcast" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/profile.php?id=61579269623389" target="_blank" rel="noopener">Facebook</a>
+    </div>
   </div>
-  <div class="lp-footer-bottom">
-    © 2026 FEEL Good Always &middot; Website designed with ♥ by <a href="https://raevemarketing.com" target="_blank" rel="noopener">Raeve Marketing</a>
-  </div>
+  <div class="footer-bottom">
+    <span>© 2026 FEEL Good Always &middot; Website designed with ♥ by <a href="https://raevemarketing.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Raeve Marketing</a></span>  </div>
 </footer>
 
 <script>
   gsap.registerPlugin(ScrollTrigger);
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); });
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  function openMenu() { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+  if (navToggle) navToggle.addEventListener('click', openMenu);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMenu);
+  if (mobileMenu) mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
 
   gsap.to('.hero .fade-up', { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.1, delay: 0.15 });
 
