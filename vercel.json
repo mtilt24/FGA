@@ -1,5 +1,27 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/costa-rica-retreat",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/retreat-jungle-room",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/retreat-queen-bungalow",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/bodhi-tree-casita",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
 }
