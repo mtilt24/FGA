@@ -42,21 +42,10 @@
     --hairline: rgba(74, 58, 85, 0.12);
     --pink: #D8547F;
     --pink-deep: #C43D6C;
-    --pink-wash: rgba(216, 84, 127, 0.16);
   }
 
-  /* Bright pink headline highlight, on a soft pink wash */
-  .hl {
-    color: var(--pink); font-style: italic; font-weight: 500;
-    background-image: linear-gradient(var(--pink-wash), var(--pink-wash));
-    background-repeat: no-repeat;
-    background-size: 100% 0.3em;
-    background-position: 0 95%;
-    padding: 0 0.08em;
-    border-radius: 3px;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
+  /* Bright pink headline highlight */
+  .hl { color: var(--pink); font-style: italic; font-weight: 500; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
